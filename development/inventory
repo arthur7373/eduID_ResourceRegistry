@@ -1,0 +1,16 @@
+vagrant_rr ansible_ssh_host=192.168.33.99
+#vagrant_rr ansible_ssh_host=127.0.0.1 ansible_ssh_port=2200
+
+[vagrant]
+vagrant_rr
+
+[vagrant:vars]
+#ansible_user=vagrant
+#ansible_private_key_file=~/.vagrant.d/insecure_private_key
+#host_key_checking = False
+
+[rr]
+vagrant_rr
+
+[development:children]
+rr
