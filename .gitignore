@@ -1,8 +1,8 @@
 *.crt
 *.key
 
-secrets.yml
+*.retry
 
-files/switch
+secrets.yml
 
 .vagrant
