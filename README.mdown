@@ -1,4 +1,40 @@
-Create a random vault password - Unless you haven't done so already
+## Initial setup
+
+After having run the playbook successfully for the first time, it is time to setup and configure the Resource Registry
+
+1. Enable setup in `/var/www/rr3/application/config_rr.php`
+
+```
+$config['rr_setup_allowed'] = TRUE;
+```
+
+2. Open https://{fqdn}/setup in your browser and create your admin account
+
+3. Disable setup in `/var/www/rr3/application/config_rr.php` again
+
+```
+$config['rr_setup_allowed'] = TRUE;
+```
+
+
+## Create a certificate for the webserver and for metadata signing
+
+For any productive webserver, we recommend using a certificate issued by a trusted CA. For testing and development, a self-signed certificate will do the job.
+
+```
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout roles/registry/files/{{ fqdn }}.key -out roles/registry/files/{{ fqdn }}.crt
+```
+
+For signing the metadata you don't need a trusted certificate, so just create one yourself.
+
+```
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout roles/registry/files/metadata-signer.key -out roles/registry/files/metadata-signer.crt
+```
+
+
+## How to make secrets.yml really secret
+
+Create a random vault password - If you haven't done so already
 ```
 openssl rand -base64 32 > ~/.ansible_vault_pass
 ```
@@ -12,19 +48,10 @@ ansible-vault encrypt secrets.yml --vault-password-file ~/.ansible_vault_pass
 
 Run the Playbook
 ```
-ansible-playbook -i [development|staging] idp_ubuntunet.yml --vault-password-file ~/.ansible_vault_pass
+ansible-playbook -i [development|staging] resource_registry.yml --vault-password-file ~/.ansible_vault_pass
 ```
 
 Show the secret vars
 ```
 ansible-vault view secrets.yml --vault-password-file ~/.ansible_vault_pass
 ``
-
-Create a certificate for the webserver
---------------------------------------
-
-For any productive webserver, we recommend using a certificate issued by a trusted CA. For testing and development, a self-signed certificate will do the job.
-
-```
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout roles/webserver/files/{{ fqdn }}.key -out roles/webserver/files/{{ fqdn }}.crt
-
