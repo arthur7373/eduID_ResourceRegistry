@@ -1,8 +1,8 @@
 - name: Install Jagger Resource Registry v3 for UbuntuNet Alliance
   hosts: rr
   become: True
-  # vars_files:
-  #   - secrets.yml
+  vars_files:
+    - secrets.yml
   roles:
     - registry
 

@@ -1,4 +1,4 @@
-fqdn: staging.rr.ubuntunet.net
+fqdn: rr.ubuntunet.net
 admin_email: chris.rohrer@ubuntunet.net
 federation_logo: logo-unida.png
 certificate_key_path: /etc/ssl/private/{{ fqdn }}.key

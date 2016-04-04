@@ -1,6 +1,16 @@
 fqdn: 192.168.33.99
 admin_email: chris.rohrer@ubuntunet.net
+federation_logo: logo-unida.png
 certificate_key_path: /etc/ssl/private/{{ fqdn }}.key
 certificate_cert_path: /etc/ssl/certs/{{ fqdn }}.crt
-codeigniter_version: 3.0.5
+certificate_organisation_name: UbuntuNet Alliance
+certificate_country_code: MW
+codeigniter_version: 3.0.6
+mysql_host: 127.0.0.1
+mysql_port: 3306
+mysql_dbname: registry
+mysql_user: registrar
+jagger_base_url: https://{{ fqdn }}
+jagger_support_mail: unida@ubuntunet.net
+xmlsectool_version: 1.2.0
 
