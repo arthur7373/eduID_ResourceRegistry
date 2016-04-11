@@ -3,6 +3,6 @@
 
 *.retry
 
-secrets.yml
+group_vars/secrets
 
 .vagrant

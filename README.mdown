@@ -32,26 +32,26 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout roles/registry/files
 ```
 
 
-## How to make secrets.yml really secret
+## How to make secret variables really secret
 
 Create a random vault password - If you haven't done so already
 ```
 openssl rand -base64 32 > ~/.ansible_vault_pass
 ```
 
-Copy, populate and encrypt secrets.yml
+Copy, populate and encrypt the secrets file
 ```
-cp secrets.yml.example secrets.yml
-vi secrets.yml
-ansible-vault encrypt secrets.yml --vault-password-file ~/.ansible_vault_pass
+cp group_vars/secrets.example group_vars/secrets
+vi group_vars/secrets
+ansible-vault encrypt group_vars/secrets --vault-password-file ~/.ansible_vault_pass
 ```
 
 Run the Playbook
 ```
-ansible-playbook -i [development|staging] resource_registry.yml --vault-password-file ~/.ansible_vault_pass
+ansible-playbook -i [development|production] resource_registry.yml --vault-password-file ~/.ansible_vault_pass
 ```
 
 Show the secret vars
 ```
-ansible-vault view secrets.yml --vault-password-file ~/.ansible_vault_pass
+ansible-vault view group_vars/secrets --vault-password-file ~/.ansible_vault_pass
 ``

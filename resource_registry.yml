@@ -2,7 +2,7 @@
   hosts: rr
   become: True
   vars_files:
-    - secrets.yml
+    - group_vars/secrets
   roles:
     - webserver
     - database
