@@ -1,0 +1,9 @@
+fqdn: 192.168.33.99
+ip: 192.168.33.99
+base_url: https://{{ fqdn }}
+federation_logo: logo-unida.png
+admin_email: chris.rohrer@ubuntunet.net
+support_mail: unida@ubuntunet.net
+signing_key: metadata-signer.key
+signing_cert: metadata-signer.crt
+

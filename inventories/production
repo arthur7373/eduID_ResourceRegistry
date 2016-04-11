@@ -1,5 +1,8 @@
 wingu_rr ansible_host=rr.ubuntunet.net
 
+[database]
+wingu_rr
+
 [wingu]
 wingu_rr
 
