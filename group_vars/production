@@ -7,9 +7,9 @@ support_mail: unida@ubuntunet.net
 signing_key: metadata-signer.key
 signing_cert: metadata-signer.crt
 
-mail_sending_active: FALSE
-smtp_host: 
-smtp_port:
-smtp_user:
-smtp_crypto:
-mail_from:
+mail_sending_active: TRUE
+smtp_host: smtp.gmail.com 
+smtp_port: 587
+smtp_user: rr@ubuntunet.net 
+smtp_crypto: tls
+mail_from: unida@ubuntunet.net

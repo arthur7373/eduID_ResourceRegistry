@@ -5,27 +5,27 @@ if (!defined('BASEPATH'))
 
 
 $config['protocol'] = 'smtp';
-$config['smtp_host'] = "SMTP_HOST";
-$config['smtp_port'] = 25;
+$config['smtp_host'] = "{{ smtp_host }}";
+$config['smtp_port'] = {{ smtp_port }};
 $config['charset'] = 'utf-8';
 $config['crlf'] = "\r\n";
 $config['newline'] = "\r\n";
 $config['wordwrap'] = TRUE;
 $config['useragent']='ResourceRegistr3';
-$config['smtp_user'] = 'USER';
-$config['smtp_pass'] = 'PASS';
-$config['smtp_crypto'] = 'tls';
+$config['smtp_user'] = '{{ smtp_user }}';
+$config['smtp_pass'] = '{{ smtp_password }}';
+$config['smtp_crypto'] = '{{ smtp_crypto }}';
 
 
 /**
  * default
  */
-$config['mail_sending_active'] = FALSE;
+$config['mail_sending_active'] = {{ mail_sending_active }};
 $config['notify_if_provider_rm_from_fed'] = TRUE;
 $config['notify_if_queue_rejected'] = TRUE;
 $config['notify_admins_if_queue_accepted'] = TRUE;
 $config['notify_requester_if_queue_accepted'] = TRUE;
-$config['mail_from'] = 'MAIL FROM';
+$config['mail_from'] = '{{ mail_from }}';
 $config['fake_mail_from'] = 'FAKEMAIL';
 $config['reply_to'] = 'REPLYTO';
 $config['mail_subject_suffix'] = '[SUBJECT_SUFFIX]';
