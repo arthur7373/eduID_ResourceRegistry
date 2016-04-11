@@ -1,0 +1,10 @@
+- name: Install apache2
+  apt: pkg=apache2 update_cache=yes cache_valid_time=36000
+
+- name: Enable Apache Rewrite modules
+  command: a2enmod rewrite
+  notify: restart apache
+
+- name: Enable Apache unique_id and ssl modules
+  command: a2enmod unique_id ssl
+  notify: restart apache

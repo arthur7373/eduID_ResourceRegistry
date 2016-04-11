@@ -1,6 +1,6 @@
 <VirtualHost *:80>
 
-  DocumentRoot /var/www/rr3
+  DocumentRoot {{ apache_document_root }}
 
   RewriteEngine on
   RewriteCond %{HTTPS} off

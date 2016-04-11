@@ -4,7 +4,11 @@
   vars_files:
     - secrets.yml
   roles:
-    - registry
+    - webserver
+    - database
+    - php
+    - jagger
+    - metadata_signing
 
   handlers:
     - name: restart apache
@@ -12,4 +16,7 @@
 
     - name: restart mysql
       service: name=mysql state=restarted
+
+    - name: restart gearman
+      service: name=gearman-job-server state=restarted
 

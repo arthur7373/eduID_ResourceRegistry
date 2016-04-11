@@ -1,0 +1,22 @@
+- name: Create download directory
+  file: >
+    path=/usr/local/dist
+    state=directory
+
+- name: Download CodeIgniter v3
+  get_url: >
+    url=https://codeload.github.com/bcit-ci/CodeIgniter/zip/{{ codeigniter_version }}
+    dest=/usr/local/dist/CodeIgniter-{{ codeigniter_version }}.zip
+
+- name: Extract CodeIgniter
+  unarchive: >
+    src=/usr/local/dist/CodeIgniter-{{ codeigniter_version }}.zip
+    dest=/opt/
+    copy=no
+
+- name: Copy CodeIgniter config
+  template: >
+    src=codeigniter_config.php.j2
+    dest=/opt/CodeIgniter-{{ codeigniter_version }}/application/config/config.php
+
+

@@ -1,0 +1,8 @@
+- name: Copy signing metadata script
+  template: >
+    src=signing.sh.j2
+    dest=/opt/metadata-signing/signing.sh
+    mode=0755
+
+- name: Run script
+  command: ./signing.sh chdir=/opt/metadata-signing

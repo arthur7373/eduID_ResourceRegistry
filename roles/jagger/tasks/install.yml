@@ -1,0 +1,26 @@
+- name: Install Zip
+  apt: pkg=zip update_cache=yes cache_valid_time=36000
+
+- name: Install memcached
+  apt: pkg=memcached update_cache=yes cache_valid_time=36000
+
+
+- name: Download Jagger
+  get_url: >
+    url=https://github.com/Edugate/Jagger/archive/1.x-stable.zip
+    dest=/usr/local/dist/Jagger-1.x-stable.zip
+
+- name: Extract Jagger
+  unarchive: >
+    src=/usr/local/dist/Jagger-1.x-stable.zip
+    dest=/var/www
+    copy=no
+
+- name: Move extracted directory
+  command: mv /var/www/Jagger-1.x-stable /var/www/rr3 creates=/var/www/rr3
+
+- name: Run Jagger install script
+  command: /var/www/rr3/install.sh script
+  args:
+    chdir: /var/www/rr3
+
