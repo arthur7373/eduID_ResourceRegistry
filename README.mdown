@@ -2,7 +2,7 @@
 
 After having run the playbook successfully for the first time, it is time to setup and configure the Resource Registry
 
-1. Make sure that the ansible variable "setup_enabled" is set to 'true'. If this has not been the case, you need to enable setup and re-run the playbook.
+1. Make sure that the ansible variable "setup_enabled" is set to 'TRUE'. If this has not been the case, you need to enable setup and re-run the playbook.
 
 
 2. Open https://{fqdn}/setup in your browser and create your admin account
@@ -10,7 +10,7 @@ After having run the playbook successfully for the first time, it is time to set
 3. Disable setup again:
 
 ```
-setup_enabled: false
+setup_enabled: FALSE
 ```
 
 
