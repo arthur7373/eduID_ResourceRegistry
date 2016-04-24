@@ -2,24 +2,26 @@
 
 After having run the playbook successfully for the first time, it is time to setup and configure the Resource Registry
 
-1. Enable setup in `/var/www/rr3/application/config_rr.php`
+1. Make sure that the ansible variable "setup_enabled" is set to 'true'. If this has not been the case, you need to enable setup and re-run the playbook.
 
-```
-$config['rr_setup_allowed'] = TRUE;
-```
 
 2. Open https://{fqdn}/setup in your browser and create your admin account
 
-3. Disable setup in `/var/www/rr3/application/config_rr.php` again
+3. Disable setup again:
 
 ```
-$config['rr_setup_allowed'] = TRUE;
+setup_enabled: false
 ```
+
+
+
+-----------------------------------------------
+
 
 
 ## Create a certificate for the webserver and for metadata signing
 
-For any productive webserver, we recommend using a certificate issued by a trusted CA. For testing and development, a self-signed certificate will do the job.
+For any productive webserver, we recommend using a certificate issued by a trusted CA, eg one obtained from Comodo. For testing and development, a self-signed certificate will do the job.
 
 ```
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout roles/registry/files/{{ fqdn }}.key -out roles/registry/files/{{ fqdn }}.crt
@@ -30,6 +32,10 @@ For signing the metadata you don't need a trusted certificate, so just create on
 ```
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout roles/registry/files/metadata-signer.key -out roles/registry/files/metadata-signer.crt
 ```
+
+
+
+-----------------------------------------------------
 
 
 ## How to make secret variables really secret
