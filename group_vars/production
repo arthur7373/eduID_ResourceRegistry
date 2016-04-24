@@ -1,4 +1,4 @@
-setup_enabled: TRUE
+setup_enabled: FALSE
 
 ip: 168.253.216.252
 fqdn: rr.ubuntunet.net
