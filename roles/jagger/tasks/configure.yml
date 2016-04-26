@@ -34,7 +34,7 @@
     working_dir: /var/www/rr3/application
 
 - name: Populate Jagger database
-  command: /var/www/rr3/application/doctrine orm:schema-tool:create && touch /var/www/rr3/application/db_populated.status
+  shell: /var/www/rr3/application/doctrine orm:schema-tool:create && touch /var/www/rr3/application/db_populated.status
   args:
     chdir: /var/www/rr3/application
     creates: /var/www/rr3/application/db_populated.status
