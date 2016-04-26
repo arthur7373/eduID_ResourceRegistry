@@ -1,30 +1,63 @@
-Create a random vault password - Unless you haven't done so already
+## Initial setup
+
+After having run the playbook successfully for the first time, it is time to setup and configure the Resource Registry
+
+1. Make sure that the ansible variable "setup_enabled" is set to 'TRUE'. If this has not been the case, you need to enable setup and re-run the playbook.
+
+
+2. Open https://{fqdn}/setup in your browser and create your admin account
+
+3. Disable setup again:
+
+```
+setup_enabled: FALSE
+```
+
+
+
+-----------------------------------------------
+
+
+
+## Create a certificate for the webserver and for metadata signing
+
+For any productive webserver, we recommend using a certificate issued by a trusted CA, eg one obtained from Comodo. For testing and development, a self-signed certificate will do the job.
+
+```
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout roles/registry/files/{{ fqdn }}.key -out roles/registry/files/{{ fqdn }}.crt
+```
+
+For signing the metadata you don't need a trusted certificate, so just create one yourself.
+
+```
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout roles/registry/files/metadata-signer.key -out roles/registry/files/metadata-signer.crt
+```
+
+
+
+-----------------------------------------------------
+
+
+## How to make secret variables really secret
+
+Create a random vault password - If you haven't done so already
 ```
 openssl rand -base64 32 > ~/.ansible_vault_pass
 ```
 
-Copy, populate and encrypt secrets.yml
+Copy, populate and encrypt the secrets file
 ```
-cp secrets.yml.example secrets.yml
-vi secrets.yml
-ansible-vault encrypt secrets.yml --vault-password-file ~/.ansible_vault_pass
+cp group_vars/secrets.example group_vars/secrets
+vi group_vars/secrets
+ansible-vault encrypt group_vars/secrets --vault-password-file ~/.ansible_vault_pass
 ```
 
 Run the Playbook
 ```
-ansible-playbook -i [development|staging] idp_ubuntunet.yml --vault-password-file ~/.ansible_vault_pass
+ansible-playbook -i [development|production] resource_registry.yml --vault-password-file ~/.ansible_vault_pass
 ```
 
 Show the secret vars
 ```
-ansible-vault view secrets.yml --vault-password-file ~/.ansible_vault_pass
+ansible-vault view group_vars/secrets --vault-password-file ~/.ansible_vault_pass
 ``
-
-Create a certificate for the webserver
---------------------------------------
-
-For any productive webserver, we recommend using a certificate issued by a trusted CA. For testing and development, a self-signed certificate will do the job.
-
-```
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout roles/webserver/files/{{ fqdn }}.key -out roles/webserver/files/{{ fqdn }}.crt
-

@@ -1,0 +1,27 @@
+- name: Create download directory
+  file: >
+    path=/usr/local/dist
+    state=directory
+
+- name: Download Composer
+  get_url: >
+    url=https://getcomposer.org/composer.phar
+    dest=/usr/local/bin/composer
+    mode=0755
+
+# - name: Download Composer
+#   shell: php -r "readfile('https://getcomposer.org/installer');" > /usr/local/dist/composer-setup.php
+
+# - name: Verify Composer
+#   command: php -r "if (hash('SHA384', file_get_contents('/usr/local/dist/composer-setup.php')) === '41e71d86b40f28e771d4bb662b997f79625196afcca95a5abf44391188c695c6c1456e16154c75a211d238cc3bc5cb47') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+
+# - name: Run Composer Installer
+#   command: php /usr/local/dist/composer-setup.php
+#   args:
+#     chdir: /usr/local/dist
+
+# - name: Move executable into path
+#   shell: mv /usr/local/dist/composer.phar /usr/local/bin/composer
+
+# - name: Remove Composer Installer
+#   command: php -r "unlink('/usr/local/dist/composer-setup.php');"

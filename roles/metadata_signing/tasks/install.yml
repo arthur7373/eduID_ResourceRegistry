@@ -1,0 +1,36 @@
+- name: Install Java Runtime for xmlsectool
+  apt: pkg=openjdk-7-jre update_cache=yes cache_valid_time=36000
+
+- name: Install gearman for metadata signing
+  apt: pkg=php5-gearman update_cache=yes cache_valid_time=36000
+
+- name: Download XMLsectool
+  get_url: >
+    url=http://shibboleth.net/downloads/tools/xmlsectool/latest/xmlsectool-{{ xmlsectool_version }}-bin.zip
+    dest=/usr/local/dist/xmlsectool-{{ xmlsectool_version }}-bin.zip
+
+- name: Unpack XMLsectool
+  unarchive: >
+    src=/usr/local/dist/xmlsectool-{{ xmlsectool_version }}-bin.zip
+    dest=/opt
+    copy=no
+
+- name: Link current xmlsectool version
+  file: >
+    src=/opt/xmlsectool-{{ xmlsectool_version }}
+    dest=/opt/xmlsectool
+    state=link
+
+- name: Make gearman listen on local interface only
+  copy: >
+    src=gearman-default
+    dest=/etc/default/gearman-job-server
+
+- name: Install gearman init.d service
+  copy: >
+    src=gearman-init
+    dest=/etc/init.d/gearman-job-server
+
+- name: Enable gearman daemon
+  command: update-rc.d gearman-job-server defaults
+  notify: restart gearman

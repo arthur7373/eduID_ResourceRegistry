@@ -1,6 +1,6 @@
 <VirtualHost *:80>
-  ServerName {{ fqdn }}
-  DocumentRoot /var/www/html
+
+  DocumentRoot {{ apache_document_root }}
 
   RewriteEngine on
   RewriteCond %{HTTPS} off
@@ -10,23 +10,23 @@
 
 <VirtualHost *:443>
 
-  ServerName {{ fqdn }}
+
   ServerAdmin {{ admin_email }}
   CustomLog /var/log/apache2/{{ fqdn }}.access.log combined
   ErrorLog /var/log/apache2/{{ fqdn }}.error.log
 
-  DocumentRoot /var/www/html
+  DocumentRoot /var/www/rr3
 
-  Alias /rr3 /var/www/html/rr3
+  Alias /rr3 /var/www/rr3
 
-  <Directory /var/www/html/rr3>
+  <Directory /var/www/rr3>
           RewriteEngine On
           RewriteBase /rr3
           RewriteCond $1 !^(Shibboleth\.sso|index\.php|logos|signedmetadata|flags|images|app|schemas|fonts|styles|images|js|robots\.txt|pub|includes)
           RewriteRule  ^(.*)$ /rr3/index.php?/$1 [L]
   </Directory>
 
-  <Directory //var/www/html/rr/application>
+  <Directory //var/www/rr3/application>
           Order allow,deny
           Deny from all
   </Directory>

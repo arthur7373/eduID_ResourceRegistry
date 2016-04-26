@@ -1,10 +1,14 @@
 - name: Install Jagger Resource Registry v3 for UbuntuNet Alliance
   hosts: rr
   become: True
-  # vars_files:
-  #   - secrets.yml
+  vars_files:
+    - group_vars/secrets.example
   roles:
-    - registry
+    - webserver
+    - database
+    - php
+    - jagger
+    # - metadata_signing
 
   handlers:
     - name: restart apache
@@ -12,4 +16,7 @@
 
     - name: restart mysql
       service: name=mysql state=restarted
+
+    - name: restart gearman
+      service: name=gearman-job-server state=restarted
 

@@ -1,0 +1,16 @@
+wingu_rr ansible_host=rr.ubuntunet.net
+
+[database]
+wingu_rr
+
+[wingu]
+wingu_rr
+
+[wingu:vars]
+ansible_user=ubuntu
+
+[rr]
+wingu_rr
+
+[production:children]
+rr

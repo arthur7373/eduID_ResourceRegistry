@@ -1,0 +1,17 @@
+- name: Create signing directory
+  file: >
+    path=/opt/metadata-signing
+    state=directory
+
+- name: Copy Metadata Signing Key
+  copy: >
+    src={{ signing_key }}
+    dest=/opt/metadata-signing/{{ signing_key }}
+    owner=www-data
+    mode=0640
+
+- name: Copy Metadata Signing Certificate
+  copy: >
+    src={{ signing_cert }}
+    dest=/opt/metadata-signing/{{ signing_cert }}
+    owner=www-data
