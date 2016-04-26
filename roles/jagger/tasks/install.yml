@@ -1,6 +1,3 @@
-- name: Install Zip
-  apt: pkg=zip update_cache=yes cache_valid_time=36000
-
 - name: Install memcached
   apt: pkg=memcached update_cache=yes cache_valid_time=36000
 

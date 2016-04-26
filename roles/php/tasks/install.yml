@@ -1,3 +1,6 @@
+- name: Install Zip
+  apt: pkg=zip update_cache=yes cache_valid_time=36000
+
 - name: Install PHP and modules
   apt: pkg={{ item }} update_cache=yes cache_valid_time=36000
   with_items:
