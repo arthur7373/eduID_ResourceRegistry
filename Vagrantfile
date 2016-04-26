@@ -25,6 +25,13 @@ Vagrant.configure(2) do |config|
     ansible.limit = 'all'
   end
 
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "resource_registry.yml"
+    ansible.inventory_path = "inventories/development"
+    ansible.limit = 'all'
+  end
+
+
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
