@@ -3,9 +3,6 @@ vagrant_rr ansible_host=192.168.33.99
 [database]
 vagrant_rr
 
-#[vagrant]
-#vagrant_rr
-
 [rr]
 vagrant_rr
 

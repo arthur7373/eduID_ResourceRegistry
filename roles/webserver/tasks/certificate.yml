@@ -40,7 +40,8 @@
     owner=root
     group=ssl-cert
     mode=0600
-  when: have_web_key.stat.exists == True
+  when: have_web_cert.stat.exists == True
+  # when: have_web_key.stat.exists == True
   notify: restart apache
 
 - name: Copy TLS certificate
