@@ -1,16 +1,16 @@
-wingu_rr ansible_host=rr.ubuntunet.net
+eduid_rr ansible_host=rr.example.net
 
 [database]
-wingu_rr
+eduid_rr
 
-[wingu]
-wingu_rr
+[eduid]
+eduid_rr
 
-[wingu:vars]
+[eduid:vars]
 ansible_user=ubuntu
 
 [rr]
-wingu_rr
+eduid_rr
 
 [production:children]
 rr

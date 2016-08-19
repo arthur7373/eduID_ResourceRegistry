@@ -1,18 +1,18 @@
 setup_enabled: FALSE
 
-ip: 168.253.216.252
-fqdn: rr.ubuntunet.net
+ip: 192.168.0.1
+fqdn: eduid.example.net
 base_url: https://{{ fqdn }}
-federation_logo: logo-unida.png
-admin_email: chris.rohrer@ubuntunet.net
-support_mail: unida@ubuntunet.net
+federation_logo: logo.png
+admin_email: admin@example.net
+support_mail: support@example.net
 
 signing_key: metadata-signer.key
 signing_cert: metadata-signer.crt
 
 mail_sending_active: TRUE
-smtp_host: smtp.gmail.com 
+smtp_host: smtp.example.net 
 smtp_port: 587
-smtp_user: rr@ubuntunet.net 
+smtp_user: eduid@example.net 
 smtp_crypto: tls
-mail_from: unida@ubuntunet.net
+mail_from: eduid@example.net
