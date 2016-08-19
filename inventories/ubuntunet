@@ -1,0 +1,16 @@
+eduid_rr ansible_host=rr.ubuntunet.net
+
+[database]
+eduid_rr
+
+[eduid]
+eduid_rr
+
+[eduid:vars]
+ansible_user=ubuntu
+
+[rr]
+eduid_rr
+
+[ubuntunet:children]
+rr

@@ -1,7 +1,7 @@
 setup_enabled: FALSE
 
 ip: 192.168.0.1
-fqdn: eduid.example.net
+fqdn: rr.example.net
 base_url: https://{{ fqdn }}
 federation_logo: logo.png
 admin_email: admin@example.net
