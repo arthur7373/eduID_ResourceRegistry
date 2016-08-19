@@ -1,4 +1,4 @@
-eduid_rr ansible_host=rr.example.net
+eduid_rr ansible_host=rr.ubuntunet.net
 
 [database]
 eduid_rr
@@ -12,5 +12,5 @@ ansible_user=ubuntu
 [rr]
 eduid_rr
 
-[production:children]
+[ubuntunet:children]
 rr
