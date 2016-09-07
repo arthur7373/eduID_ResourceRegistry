@@ -4,7 +4,7 @@
 
 - name: Download Jagger
   get_url: >
-    url=https://github.com/Edugate/Jagger/archive/1.x-stable.zip
+    url=https://github.com/ubuntunet/Jagger/archive/1.x-stable.zip
     dest=/usr/local/dist/Jagger-1.x-stable.zip
 
 - name: Extract Jagger
