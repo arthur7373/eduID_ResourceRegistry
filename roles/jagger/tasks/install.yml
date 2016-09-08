@@ -4,17 +4,22 @@
 
 - name: Download Jagger
   get_url: >
-    url=https://github.com/Edugate/Jagger/archive/1.x-stable.zip
+    url=https://github.com/ubuntunet/Jagger/archive/1.x-stable.zip
     dest=/usr/local/dist/Jagger-1.x-stable.zip
+    force=yes
 
 - name: Extract Jagger
   unarchive: >
     src=/usr/local/dist/Jagger-1.x-stable.zip
-    dest=/var/www
+    dest=/usr/local/dist
     copy=no
+    owner=www-data
+
+- name: Remove old Jagger directory
+  file: path=/var/www/rr3 state=absent
 
 - name: Move extracted directory
-  command: mv /var/www/Jagger-1.x-stable /var/www/rr3 creates=/var/www/rr3
+  command: mv /usr/local/dist/Jagger-1.x-stable /var/www/rr3
 
 - name: Run Jagger install script
   command: /var/www/rr3/install.sh script

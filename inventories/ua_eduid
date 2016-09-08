@@ -1,5 +1,4 @@
-eduid_rr ansible_host=rr.ubuntunet.net
-
+eduid_rr ansible_host=168.253.216.190
 [database]
 eduid_rr
 
@@ -12,5 +11,5 @@ ansible_user=ubuntu
 [rr]
 eduid_rr
 
-[ubuntunet:children]
+[ua_eduid:children]
 rr
