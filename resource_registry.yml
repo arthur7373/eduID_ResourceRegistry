@@ -8,7 +8,7 @@
     - database
     - php
     - jagger
-    # - metadata_signing
+    - metadata_signing
 
   handlers:
     - name: restart apache
@@ -19,4 +19,3 @@
 
     - name: restart gearman
       service: name=gearman-job-server state=restarted
-
