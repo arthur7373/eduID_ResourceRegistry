@@ -8,6 +8,8 @@ federation_logo: logo-unida.png
 admin_email: chris.rohrer@ubuntunet.net
 support_mail: eduid@ubuntunet.net
 
+registration_authority: https://ubuntunet.net
+
 signing_key: metadata-signer.key
 signing_cert: metadata-signer.crt
 

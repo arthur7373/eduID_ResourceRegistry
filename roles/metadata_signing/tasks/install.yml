@@ -30,6 +30,7 @@
   copy: >
     src=gearman-init
     dest=/etc/init.d/gearman-job-server
+    mode=0755
 
 - name: Enable gearman daemon
   command: update-rc.d gearman-job-server defaults

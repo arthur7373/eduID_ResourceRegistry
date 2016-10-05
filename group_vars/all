@@ -1,6 +1,6 @@
 codeigniter_version: 3.0.6
 composer_version: 1.0.0-beta2
-xmlsectool_version: 1.2.0
+xmlsectool_version: 2.0.0
 apache_document_root: /var/www/rr3
 java_home: /usr/lib/jvm/java-1.7.0-openjdk-amd64
 certificate_key_path: /etc/ssl/private/{{ fqdn }}.key
