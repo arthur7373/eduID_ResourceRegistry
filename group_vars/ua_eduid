@@ -1,6 +1,7 @@
 setup_enabled: FALSE
 
-ip: 168.253.216.190
+ip: 196.223.218.60
+#ip: 168.253.216.190
 #fqdn: 168.253.216.190
 fqdn: rr.ubuntunet.net
 base_url: https://{{ fqdn }}

@@ -1,4 +1,6 @@
-eduid_rr ansible_host=168.253.216.190
+#eduid_rr ansible_host=168.253.216.190
+eduid_rr ansible_host=196.223.218.60
+
 [database]
 eduid_rr
 
