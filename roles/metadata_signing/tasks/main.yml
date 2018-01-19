@@ -1,3 +1,3 @@
-- include: install.yml
-- include: certificates.yml
-- include: script.yml
+- import_tasks: install.yml
+- import_tasks: certificates.yml
+- import_tasks: script.yml

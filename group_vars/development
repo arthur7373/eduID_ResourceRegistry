@@ -1,20 +1,21 @@
-setup_enabled: TRUE
+setup_enabled: FALSE
 
-fqdn: 192.168.33.99
-ip: 192.168.33.99
+fqdn: 196.223.215.191
+ip: 196.223.215.191
 base_url: https://{{ fqdn }}
-federation_logo: logo.png
-admin_email: admin@localhost.net
-support_mail: eduid@localhost.net
+federation_logo: logo-unida.png
+admin_email: chris.rohrer@ubuntunet.net
+support_mail: eduid@ubuntunet.net
 
-registration_authority: https://example.net
+registration_authority: https://ubuntunet.net
 
 signing_key: metadata-signer.key
 signing_cert: metadata-signer.crt
 
 mail_sending_active: TRUE
-smtp_host: smtp.example.net 
+smtp_host: smtp.sparkpostmail.com 
 smtp_port: 587
-smtp_user: eduid@example.net 
+smtp_user: SMTP_Injection
 smtp_crypto: tls
-mail_from: eduid@example.net
+mail_from: eduid@ubuntunet.net
+reply_to: eduid@ubuntunet.net
