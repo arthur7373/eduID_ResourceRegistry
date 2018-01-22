@@ -1,8 +1,6 @@
 setup_enabled: FALSE
 
 ip: 196.223.218.60
-#ip: 168.253.216.190
-#fqdn: 168.253.216.190
 fqdn: rr.ubuntunet.net
 base_url: https://{{ fqdn }}
 federation_logo: logo-unida.png
@@ -15,8 +13,9 @@ signing_key: metadata-signer.key
 signing_cert: metadata-signer.crt
 
 mail_sending_active: TRUE
-smtp_host: smtp.gmail.com 
+smtp_host: smtp.sparkpostmail.com 
 smtp_port: 587
-smtp_user: rr@ubuntunet.net 
+smtp_user: SMTP_Injection
 smtp_crypto: tls
 mail_from: eduid@ubuntunet.net
+reply_to: eduid@ubuntunet.net
