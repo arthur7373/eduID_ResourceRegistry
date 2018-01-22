@@ -1,40 +1,43 @@
-- name: Copy apache2 config file
-  template: >
-    src=apache2.conf.j2
-    dest=/etc/apache2/sites-available/{{ fqdn }}.conf
+- name: Replace hostname
+  template:
+    src: hostname.j2
+    dest: /etc/hostname
   notify: restart apache
 
-- name: Disable default configuration
-  command: a2dissite 000-default
+- name: Add hostname to host file
+  lineinfile:
+    dest: /etc/hosts
+    line: "{{ ip }} {{ fqdn }}"
   notify: restart apache
 
-- name: Enable IdP configuration
-  command: a2ensite {{ fqdn }}
-  notify: restart apache
+- name: Change hostname temporarily (until next reboot)
+  command: hostname {{ fqdn }}
 
 - name: Add default ServerName
-  template: >
-    src=apache2_fqdn.conf.j2
-    dest=/etc/apache2/conf-available/fqdn.conf
+  template:
+    src: apache2_fqdn.conf.j2
+    dest: /etc/apache2/conf-available/fqdn.conf
   notify: restart apache
 
 - name: Enable default ServerName
   command: a2enconf fqdn
   notify: restart apache
 
-- name: Replace hostname
-  template: >
-    src=hostname.j2
-    dest=/etc/hostname
+- name: Install Certificate with Let's Encrypt
+  command: "certbot --apache -n -d {{ fqdn }} --agree-tos --email {{ admin_email }}"
+  # command: "certbot --authenticator webroot --webroot-path /var/www/html --installer apache -n -d {{ fqdn }} --agree-tos --email {{ admin_email }}"
+
+- name: Disable default configuration
+  command: a2dissite 000-default
+  notify: restart apache  
+
+- name: Copy apache2 config file
+  template:
+    src: apache2.conf.j2
+    dest: /etc/apache2/sites-available/{{ fqdn }}.conf
   notify: restart apache
 
-- name: Add hostname to host file
-  lineinfile: >
-    dest=/etc/hosts
-    line='{{ ip }} {{ fqdn }}'
+- name: Enable IdP configuration
+  command: a2ensite {{ fqdn }}
   notify: restart apache
 
-- name: Change hostname temporarily (until next reboot)
-  command: hostname {{ fqdn }}
-
-  
