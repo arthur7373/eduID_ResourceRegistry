@@ -64,7 +64,7 @@ $config['autoregister_federated'] = false;
  * Guest has lowest level of permission, he can access only some pages
  * Member has read access to most pages
  */
-$config['register_defaultrole'] = 'Guest';
+$config['register_defaultrole'] = 'Member';
 /**
  * Defines the minimum allowed length of a username
  */
@@ -74,7 +74,8 @@ $config['username_min_length'] = 5;
  *
  */
 $config['Shib_required'] = array('Shib_mail','Shib_username');
-$config['Shib_username'] = 'eppn';
+// $config['Shib_username'] = 'eppn';
+$config['Shib_username'] = 'eduPersonPrincipalName';
 $config['Shib_mail'] = 'mail';
 $config['Shib_groups'] = 'isMemberOf';
 /**
@@ -182,12 +183,31 @@ $config['translator_access']['it'] = null;
  * $config['datastorage_path'] = '/opt/rr3data/'
  */
 
+
+$config['mq'] = 'rabbitmq';
+
+
 /**
  * gearman
  */
 $config['gearman'] = FALSE;
 $config['gearmanconf']['jobserver'] = array(array('ip'=>'127.0.0.1','port'=>'4730'));
 $config['statistics'] = FALSE;
+
+
+/**
+ * rabbitmq
+ */
+
+$config['rabbitmq'] = array(
+    'enabled' => true,
+    'vhost' => '/',
+    'host'=>'127.0.0.1',
+    'port'=> 5672,
+    'user'=>'guest',
+    'password'=>'guest'
+);
+
 
 /**
  * enable statistics collection gearman also has to be enabled
