@@ -10,7 +10,7 @@
   hosts: rr
   become: True
   vars_files:
-    - group_vars/secrets.example
+    - group_vars/secrets
   roles:
     - webserver
     - database
