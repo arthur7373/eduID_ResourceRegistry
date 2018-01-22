@@ -1,6 +1,6 @@
 setup_enabled: FALSE
 
-fqdn: 196.223.215.191
+fqdn: rr-dev.ubuntunet.net
 ip: 196.223.215.191
 base_url: https://{{ fqdn }}
 federation_logo: logo-unida.png

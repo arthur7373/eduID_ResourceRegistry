@@ -1,10 +1,17 @@
-vagrant_rr ansible_host=192.168.33.99
+vagrant_rr ansible_host=rr-dev.ubuntunet.net
 
 [database]
 vagrant_rr
+
+[eduid]
+vagrant_rr
+
+[eduid:vars]
+ansible_user=ubuntu
 
 [rr]
 vagrant_rr
 
 [development:children]
 rr
+
