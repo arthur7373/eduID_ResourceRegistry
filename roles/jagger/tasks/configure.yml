@@ -1,32 +1,32 @@
 - name: Copy Jagger config
-  template: >
-    src=jagger_config.php.j2
-    dest=/var/www/rr3/application/config/config.php
+  template:
+    src: jagger_config.php.j2
+    dest: /var/www/rr3/application/config/config.php
 
 - name: Copy Jagger RR config
-  template: >
-    src=jagger_config_rr.php.j2
-    dest=/var/www/rr3/application/config/config_rr.php
+  template:
+    src: jagger_config_rr.php.j2
+    dest: /var/www/rr3/application/config/config_rr.php
 
 - name: Copy Jagger Database config
-  template: >
-    src=jagger_database.php.j2
-    dest=/var/www/rr3/application/config/database.php
+  template:
+    src: jagger_database.php.j2
+    dest: /var/www/rr3/application/config/database.php
 
 - name: Copy Jagger email config
-  template: >
-    src=jagger_email.php.j2
-    dest=/var/www/rr3/application/config/email.php
+  template:
+    src: jagger_email.php.j2
+    dest: /var/www/rr3/application/config/email.php
 
 - name: Copy Jagger memcached config
-  template: >
-    src=jagger_memcached.php.j2
-    dest=/var/www/rr3/application/config/memcached.php
+  template:
+    src: jagger_memcached.php.j2
+    dest: /var/www/rr3/application/config/memcached.php
 
 - name: Copy Jagger index file
-  template: >
-    src=jagger_index.php.j2
-    dest=/var/www/rr3/index.php
+  template:
+    src: jagger_index.php.j2
+    dest: /var/www/rr3/index.php
 
 - name: Run Jagger composer script
   composer:
@@ -50,15 +50,15 @@
     chdir: /var/www/rr3/application
 
 - name: Copy logo of the organization
-  copy: >
-    src={{ federation_logo }}
-    dest=/var/www/rr3/images/
+  copy:
+    src: "{{ federation_logo }}"
+    dest: /var/www/rr3/images/
 
 - name: Hand all over to www-data User
-  file: >
-    path=/var/www/rr3
-    state=directory
-    owner=www-data
-    recurse=yes
+  file:
+    path: /var/www/rr3
+    state: directory
+    owner: www-data
+    recurse: yes
 
 

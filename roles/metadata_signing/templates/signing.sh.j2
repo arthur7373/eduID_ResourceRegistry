@@ -6,7 +6,6 @@ H=$2
 XMLSECTOOLDIR="/opt/xmlsectool-{{ xmlsectool_version }}"
 SIGNCERT="/opt/metadata-signing/{{ signing_cert }}"
 SIGNKEY="/opt/metadata-signing/{{ signing_key }}"
-# SIGNPASS="{{ signing_cert_password }}"
 RR3_PATH="{{ apache_document_root }}"
 RR3_URL="https://{{ fqdn }}/tools/sync_metadata/metadataslist";
 Y=`tempfile`
@@ -32,7 +31,7 @@ for i in `cat ${Y}`; do
      mkdir -p $dstoutput
   fi
   ${XMLSECTOOLDIR}/xmlsectool.sh --sign --certificate ${SIGNCERT} --key ${SIGNKEY} \
-    --outFile ${dstoutput}/metadata.xml --inUrl ${srcurl}
+    --outFile ${dstoutput}/metadata.xml --inUrl ${srcurl} --referenceIdAttributeName ID
   # ${XMLSECTOOLDIR}/xmlsectool.sh --sign --certificate ${SIGNCERT} --key ${SIGNKEY} --keyPassword ${SIGNPASS} \
   #   --outFile ${dstoutput}/metadata.xml --inUrl ${srcurl}
 done

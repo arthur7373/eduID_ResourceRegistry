@@ -1,13 +1,13 @@
 - name: Create download directory
-  file: >
-    path=/usr/local/dist
-    state=directory
+  file:
+    path: /usr/local/dist
+    state: directory
 
 - name: Download Composer
-  get_url: >
-    url=https://getcomposer.org/composer.phar
-    dest=/usr/local/bin/composer
-    mode=0755
+  get_url:
+    url: https://getcomposer.org/composer.phar
+    dest: /usr/local/bin/composer
+    mode: 0755
 
 # - name: Download Composer
 #   shell: php -r "readfile('https://getcomposer.org/installer');" > /usr/local/dist/composer-setup.php

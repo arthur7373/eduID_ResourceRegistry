@@ -1,17 +1,17 @@
 - name: Copy signing metadata script
-  template: >
-    src=signing.sh.j2
-    dest=/opt/metadata-signing/signing.sh
-    mode=0755
+  template:
+    src: signing.sh.j2
+    dest: /opt/metadata-signing/signing.sh
+    mode: 0755
 
-- name: Run script
-  command: ./signing.sh chdir=/opt/metadata-signing
+# - name: Run script
+#   command: ./signing.sh chdir=/opt/metadata-signing
 
 - name: Cronjob for re-signing metadata every two hours
-  cron: > 
-    name="sign metadata"
-    user="root"
-    minute="12" 
-    hour="*/2" 
-    job="/opt/metadata-signing/signing.sh"
-    cron_file=sign_metadata
+  cron:
+    name: sign metadata
+    user: root
+    minute: 12
+    hour: "*/2"
+    job: /opt/metadata-signing/signing.sh
+    cron_file: sign_metadata

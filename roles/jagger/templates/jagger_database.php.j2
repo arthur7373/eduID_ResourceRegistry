@@ -51,7 +51,7 @@ $db['default']['hostname'] = '127.0.0.1';
 $db['default']['username'] = '{{ mysql_user }}';
 $db['default']['password'] = '{{ mysql_password }}';
 $db['default']['database'] = '{{ mysql_dbname }}';
-$db['default']['dsn']      = 'mysql:host={{ mysql_host }};port={{ mysql_port }};dbname={{ mysql_password }}';
+$db['default']['dsn']      = 'mysql:host={{ mysql_host }};port={{ mysql_port }};dbname={{ mysql_dbname }}';
 $db['default']['dbdriver'] = 'pdo';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
