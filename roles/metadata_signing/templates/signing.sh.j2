@@ -11,7 +11,7 @@ RR3_URL="https://{{ fqdn }}/tools/sync_metadata/metadataslist";
 Y=`tempfile`
 cd ${XMLSECTOOLDIR}
 
-if [ $G == "provider" ]; then
+if [ "$G" == "provider" ]; then
  wget --no-check-certificate -O ${Y} ${RR3_URL}/${H}
 else
  wget --no-check-certificate -O ${Y} ${RR3_URL}
