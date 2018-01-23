@@ -13,5 +13,5 @@
     user: root
     minute: 12
     hour: "*/2"
-    job: /opt/metadata-signing/signing.sh
+    job: "/opt/metadata-signing/signing.sh  > /dev/null"
     cron_file: sign_metadata
