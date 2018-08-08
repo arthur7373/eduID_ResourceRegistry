@@ -12,11 +12,11 @@
   vars_files:
     - group_vars/secrets
   roles:
-    - webserver
-    - database
-    - php
+    # - webserver
+    # - database
+    # - php
     - jagger
-    - metadata_signing
+    # - metadata_signing
 
   handlers:
     - name: restart apache
