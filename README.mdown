@@ -21,7 +21,7 @@ setup_enabled: FALSE
 
 ## Create a certificate for the webserver and for metadata signing
 
-For any productive webserver, we recommend using a certificate issued by a trusted CA, eg one obtained from Comodo. For testing and development, a self-signed certificate will do the job.
+For any productive webserver, we recommend using a certificate issued by a trusted CA. Let's Encrypt (https://letsencrypt.org/) is a very useful offering, as is the free Comodo certificates available through UbuntuNet Alliance. For testing and development, a self-signed certificate will do the job.
 
 ```
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout roles/registry/files/{{ fqdn }}.key -out roles/registry/files/{{ fqdn }}.crt

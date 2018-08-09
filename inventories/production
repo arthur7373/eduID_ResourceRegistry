@@ -8,6 +8,7 @@ eduid_rr
 
 [eduid:vars]
 ansible_user=ubuntu
+ansible_python_interpreter=/usr/bin/python3
 
 [rr]
 eduid_rr

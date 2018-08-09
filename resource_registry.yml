@@ -1,11 +1,3 @@
-- name: Make sure Python2 is available
-  hosts: rr
-  become: True
-  gather_facts: False
-  tasks:
-    - raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
-
-
 - name: Install Jagger Resource Registry v3 for UbuntuNet Alliance
   hosts: rr
   become: True
@@ -13,7 +5,7 @@
     - group_vars/secrets
   roles:
     - webserver
-    - database
+    # - database
     - php
     - jagger
     - metadata_signing
