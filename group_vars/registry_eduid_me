@@ -1,0 +1,21 @@
+setup_enabled: FALSE
+
+ip: 196.223.218.60
+fqdn: registry.eduid.me
+base_url: https://{{ fqdn }}
+federation_logo: logo-unida.png
+admin_email: devops@ubuntunet.net
+support_mail: eduid@ubuntunet.net
+
+registration_authority: https://ubuntunet.net
+
+signing_key: metadata-signer.key
+signing_cert: metadata-signer.crt
+
+mail_sending_active: TRUE
+smtp_host: smtp.sparkpostmail.com 
+smtp_port: 587
+smtp_user: SMTP_Injection
+smtp_crypto: tls
+mail_from: eduid@ubuntunet.net
+reply_to: eduid@ubuntunet.net
