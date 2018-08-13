@@ -1,3 +1,5 @@
+# Ansible Playbook for eduID Resource Registry using Jagger
+
 ## Initial setup
 
 After having run the playbook successfully for the first time, it is time to setup and configure the Resource Registry
@@ -13,11 +15,11 @@ After having run the playbook successfully for the first time, it is time to set
 setup_enabled: FALSE
 ```
 
+## Upgrades/Redployments
 
+There is no need to enable setup as is being done with initial setups. 
 
------------------------------------------------
-
-
+Make sure to go to https://{fqdn}/update/upgrade after any upgrades in order to make sure that any pending database upgrades are being run.
 
 ## Create a certificate for the webserver and for metadata signing
 
