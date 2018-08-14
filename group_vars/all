@@ -1,4 +1,4 @@
-codeigniter_version: 3.1.7
+codeigniter_version: 3.1.9
 xmlsectool_version: 2.0.0
 apache_document_root: /var/www/rr3
 java_home: /usr/lib/jvm/java-1.9.0-openjdk-amd64
