@@ -18,10 +18,11 @@
     - python-certbot-apache
     # - libapache2
 
-- name: Enable Apache Rewrite modules
-  command: a2enmod rewrite
+- name: Enable Apache module
+  command: a2enmod {{ item }}
+  with_items:
+    - rewrite
+    - unique_id
+    - ssl
   notify: restart apache
 
-- name: Enable Apache unique_id and ssl modules
-  command: a2enmod unique_id ssl
-  notify: restart apache
