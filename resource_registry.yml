@@ -5,7 +5,7 @@
     - group_vars/secrets
   roles:
     - webserver
-    # - database
+    - database
     - php
     - jagger
     - metadata_signing
