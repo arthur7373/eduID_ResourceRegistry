@@ -14,6 +14,11 @@
     - php-pear
     - php-bcmath
     - php-mbstring
+    - libapache2-mod-php7.0
+
+- name: Enable Apache PHP module
+  command: a2enmod php7.0
+  notify: restart apache
 
 # - name: Copy php.ini
 #   copy: >
