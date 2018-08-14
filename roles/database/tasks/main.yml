@@ -3,6 +3,7 @@
   with_items:
   - mysql-server
   - python-mysqldb
+  - python3-mysqldb
 
 - name: Create MySQL database
   mysql_db: name={{ mysql_dbname }} state=present
