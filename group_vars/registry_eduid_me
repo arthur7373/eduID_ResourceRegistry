@@ -17,5 +17,5 @@ smtp_host: smtp.sparkpostmail.com
 smtp_port: 587
 smtp_user: SMTP_Injection
 smtp_crypto: tls
-mail_from: eduid@ubuntunet.net
+mail_from: registry@eduid.me
 reply_to: eduid@ubuntunet.net
