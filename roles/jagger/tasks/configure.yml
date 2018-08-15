@@ -54,6 +54,18 @@
     src: "{{ federation_logo }}"
     dest: /var/www/rr3/images/
 
+- name: Copy Jaggermailer init script
+  copy:
+    src: jaggermailer
+    dest: /etc/init.d
+    mode: 0755
+
+- name: Enable Jaggermailer init script
+  service: 
+    name: jaggermailer
+    enabled: yes
+    state: started
+
 - name: Hand all over to www-data User
   file:
     path: /var/www/rr3

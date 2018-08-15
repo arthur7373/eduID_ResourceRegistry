@@ -1,0 +1,39 @@
+#!/bin/bash
+
+### BEGIN INIT INFO
+# Provides: jaggermailer
+# Required-Start: $syslog $network $local_fs $remote_fs
+# Required-Stop: $syslog $network $local_fs $remote_fs
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Jagger mailer system
+### END INIT INFO
+ARGS="/var/www/rr3/index.php gworkers mailqueuesender"
+DAEMON="/usr/bin/php"
+PIDFILE="/var/run/jagger/mailqueuesender.pid"
+USER="www-data"
+
+if [ ! -d /var/run/jagger ] ; then
+    mkdir /var/run/jagger
+fi
+
+case "$1" in
+  start)
+    echo "Starting g-worker: ${ARGS}"
+    /sbin/start-stop-daemon --start --pidfile $PIDFILE \
+        --user $USER --group $USER \
+        -b --make-pidfile \
+        --chuid $USER \
+        --exec $DAEMON $ARGS
+    ;;
+  stop)
+    echo "Stopping server"
+    /sbin/start-stop-daemon --stop --pidfile $PIDFILE --verbose
+    ;;
+  *)
+    echo "Usage: /etc/init.d/jaggermailer {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0
