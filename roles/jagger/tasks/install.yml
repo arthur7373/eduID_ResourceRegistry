@@ -1,8 +1,8 @@
 - name: Install NTP and memcached
-  apt: pkg={{ item }} update_cache=yes cache_valid_time=36000
-  with_items:
-    - ntp
-    - memcached
+  apt: 
+    pkg: ['ntp', 'memcached'] 
+    update_cache: yes 
+    cache_valid_time: 36000
 
 - name: Download Jagger
   get_url:
