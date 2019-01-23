@@ -2,19 +2,11 @@
   apt: pkg=zip update_cache=yes cache_valid_time=36000
 
 - name: Install PHP and modules
-  apt: pkg={{ item }} update_cache=yes cache_valid_time=36000
-  with_items:
-    - php
-    - php-apcu
-    - php-cli
-    - php-curl
-    - php-mysql
-    - php-mcrypt
-    - php-memcached
-    - php-pear
-    - php-bcmath
-    - php-mbstring
-    - libapache2-mod-php7.0
+  apt: 
+    pkg: ['php', 'php-apcu', 'php-cli', 'php-curl', 'php-mysql', 'php-mcrypt', 'php-memcached', 'php-pear', 'php-
+bcmath', 'php-mbstring', 'libapache2-mod-php7.0']
+    update_cache: yes 
+    cache_valid_time: 36000
 
 - name: Enable Apache PHP module
   command: a2enmod php7.0
